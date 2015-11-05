@@ -3,6 +3,8 @@ Spring Boot App. Simple note taker web service. RESTful API's to retrieve all no
 There is no security as of now. Simply run the Boot app and use curl to interact with the RESTful API (JSON payload).
 
 # To run the app
+## Dependencies
+Download and run Mongodb 
     mvn spring-boot:run
 
 ## Command line interaction with APIs
