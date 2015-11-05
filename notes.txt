@@ -1,0 +1,1 @@
+curl -XPOST http://localhost:8080/careerlens-service/notes -d {"message": "note1"}
