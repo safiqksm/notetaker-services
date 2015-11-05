@@ -34,7 +34,9 @@ public class NoteServiceImpl implements NoteService {
 
     // @Secured("hasRole('USER')")
     public void addNote(Note note) {
-        note.setCreatedOnDate(new Date());
+        if (note.getCreatedOnDate() == null) {
+            note.setCreatedOnDate(new Date());
+        }
         noteRepository.save(note);
     }
 
