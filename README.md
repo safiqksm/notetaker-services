@@ -3,21 +3,22 @@ Spring Boot App. Simple note taker web service. RESTful API's to retrieve all no
 There is no security as of now. Simply run the Boot app and use curl to interact with the RESTful API (JSON payload).
 
 # To run the app
-## Dependencies
-Download and run Mongodb 
+Download and run Mongodb. 
+
+Next run the application using
     mvn spring-boot:run
 
-## Command line interaction with APIs
-### Add new note from command line
+### Interact with app using curl
+#### Add new note
     curl http://localhost:8080/notes/add -X POST -d '{"message":"note1", "createdOnDate": "01/01/2015"}' -H "Content-Type: application/json"
 
-### Get all notes
+#### Get all notes
     curl -XGET  http://localhost:8080/notes/
 
-### Delete a note. Replace {noteid} with the actual id.
+#### Delete a note. Replace {noteid} with the actual id.
     curl -XDELETE  http://localhost:8080/notes/{noteid}
 
-## Actuator endpoint
+### Actuator endpoint
     curl http://localhost:8081/health 
     curl http://localhost:8081/env
     curl http://localhost:8081/info
