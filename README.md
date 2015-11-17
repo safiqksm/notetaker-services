@@ -1,11 +1,18 @@
-Spring Boot App. Simple note taker web service. RESTful API's to retrieve all notes, add a new one and delete existing one.
+Spring Boot App. Simple note taker web service. RESTful API's to retrieve all notes, add a new one and delete existing one. There is no security as of now. Simply run the Boot app and use curl to interact with the RESTful API (JSON payload).
 
-There is no security as of now. Simply run the Boot app and use curl to interact with the RESTful API (JSON payload).
+### Pre-Requsites
+### Run a local Eureka Service Registry
+Retrieve a copy of the spring-cloud eureka sample server project and run that localy to stand up a local server.
+
+    git clone https://github.com/spring-cloud-samples/eureka.git
+    mvn clean spring-boot:run
+    http://localhost:8761/eureka
+    http://localhost:8761/eureka/apps
 
 # To run the app
 Download and run Mongodb. 
 
-Next run the application using
+Next run this API application using
     mvn spring-boot:run
 
 ### Interact with app using curl
@@ -24,8 +31,3 @@ Next run the application using
     curl http://localhost:8081/info
     curl http://localhost:8081/metrics
     
-### Eureka Service Registry
-Make sure to run an instance of Eureka on the local machine. You can then get view Eureka console at.
-
-    http://localhost:8761/eureka
-    http://localhost:8761/eureka/apps
