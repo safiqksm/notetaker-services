@@ -24,7 +24,7 @@ Next run the application using
     curl http://localhost:8081/info
     curl http://localhost:8081/metrics
     
-### Eureka
+### Eureka Service Registry
 Make sure to run an instance of Eureka on the local machine. You can then get view Eureka console at...
     http://localhost:8761/eureka
     http://localhost:8761/eureka/apps
