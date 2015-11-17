@@ -1,3 +1,7 @@
+spring:
+  application:
+    name: notetaker-service
+    
 server:
   port: 8080
 
@@ -23,16 +27,27 @@ spring:
     cache-seconds: -1
     encoding: UTF-8
 
+logging:
+  file: notetaker-services.log
+  level: com.aver=DEBUG
+  path: /Users/mathew/temp
+    
+---
+endpoints:
+  logfile:
+    enabled: true
+    path: /logfile
+    sensitive: false
+  metrics:
+    enabled: true
+  info:
+    enabled: true
+  
+
 --- 
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${vcap.services.eureka-service.credentials.uri:http://127.0.0.1:8761}/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
 ---
-spring:
-  profiles: cloud
-eureka:
-  instance:
-    hostname: ${APPLICATION_DOMAIN}
-    nonSecurePort: 80
