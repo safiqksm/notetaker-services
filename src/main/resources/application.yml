@@ -2,13 +2,9 @@ spring:
   application:
     name: notetaker-service
     
+---    
 server:
   port: 8080
-
----
-# Actuator
-management:
-  port: 8081
 
 ---
 # HTTP encoding
@@ -18,7 +14,7 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-
+        
 ---
 # INTERNATIONALIZATION (MessageSourceAutoConfiguration)
 spring:
@@ -28,26 +24,44 @@ spring:
     encoding: UTF-8
 
 logging:
-  file: notetaker-services.log
-  level: com.aver=DEBUG
+  file: notetaker-service.log
+  level:     
+    com.aver: DEBUG
   path: /Users/mathew/temp
     
 ---
 endpoints:
+  health:
+    enabled: true
+    sensitive: false
   logfile:
     enabled: true
     path: /logfile
     sensitive: false
   metrics:
     enabled: true
+    sensitive: false
   info:
     enabled: true
-  
+    sensitive: false
+  sensitive: false
+    
+---
+turbine:
+  stream:
+    destination: metricqueue
+    port: 8989
+    
+---
+health:
+  hystrix:
+    enabled: true
 
---- 
+---
 eureka:
+  instance:
+    hostname: localhost
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-
----
+       

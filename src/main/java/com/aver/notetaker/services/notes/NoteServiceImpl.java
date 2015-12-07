@@ -24,6 +24,8 @@ public class NoteServiceImpl implements NoteService {
     public List<Note> getAllNotes() {
         List<Note> notelist = new ArrayList<Note>();
         noteRepository.findAll().forEach(note -> notelist.add(note));
+
+        // return notelist
         return notelist;
     }
 
@@ -44,4 +46,5 @@ public class NoteServiceImpl implements NoteService {
     public void delete(String id) {
         noteRepository.delete(id);
     }
+
 }

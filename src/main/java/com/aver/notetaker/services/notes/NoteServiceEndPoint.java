@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aver.notetaker.domain.Note;
+import com.aver.notetaker.domain.Quote;
 import com.aver.notetaker.services.exception.ApplicationException;
+import com.aver.notetaker.services.repository.NoteRepository;
 
 @RestController
 @RequestMapping("/notes")
@@ -23,10 +25,26 @@ public class NoteServiceEndPoint {
 
     @Autowired
     private NoteService noteService;
+    
+    @Autowired
+    private QuoteRetriever quoteRetriever;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<Note> all() {
-        return noteService.getAllNotes();
+    public NoteListResponseWrapper all() {
+        // get random quote
+        Quote quote = quoteRetriever.getRandomQuote();
+        LOGGER.info(quote.toString());
+
+
+        // get all mnotes
+        List<Note> notes = noteService.getAllNotes();
+        
+        // prepare response
+        NoteListResponseWrapper response = new NoteListResponseWrapper();
+        response.setNotes(notes);
+        response.setQuote(quote);
+        
+        return response;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
