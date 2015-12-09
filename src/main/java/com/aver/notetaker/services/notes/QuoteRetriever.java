@@ -20,12 +20,7 @@ public class QuoteRetriever {
     @HystrixCommand(fallbackMethod = "fallbackQuoteService")
     public Quote getRandomQuote() {
         Quote quote = quoteClient.getQuote();
-        // RestTemplate restTemplate = new RestTemplate();
-        // Quote quote =
-        // restTemplate.getForObject("http://quote-service/quotes/",
-        // Quote.class);
         LOGGER.info(quote.toString());
-
         return quoteClient.getQuote();
     }
 
